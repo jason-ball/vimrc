@@ -18,15 +18,24 @@ endtry' > ~/.vimrc
 echo "Installed the Ultimate Vim configuration successfully! Enjoy :-)"
 
 echo "Starting Jason Ball Customization!"
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "
 set nocompatible
 filetype off
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
+
 Plug 'valloric/youcompleteme'
 Plug 'jez/vim-superman'
+
 call plug#end()
+
 set noshowmode
 set mouse=a
 let g:NERDTreeWinPos = 'left'
