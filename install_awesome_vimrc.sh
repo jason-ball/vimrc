@@ -16,3 +16,26 @@ catch
 endtry' > ~/.vimrc
 
 echo "Installed the Ultimate Vim configuration successfully! Enjoy :-)"
+
+echo "Starting Jason Ball Customization!"
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+echo "
+set nocompatible
+filetype off
+call plug#begin('~/.vim/plugged')
+Plug 'valloric/youcompleteme'
+Plug 'jez/vim-superman'
+call plug#end()
+set noshowmode
+set mouse=a
+let g:NERDTreeWinPos = 'left'
+set number
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+set guifont=MesloLGSNerdFontComplete-Regular:h14
+
+inoremap jj <esc>
+inoremap jk <esc>" >> ~/.vimrc
+
+echo "End Jason Ball Customization!"
